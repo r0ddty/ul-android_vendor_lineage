@@ -642,5 +642,22 @@ stagefright_qcom_legacy {
         uses_qcom_bsp_legacy: {
             cppflags: ["-DQCOM_BSP_LEGACY"],
         },
+    }
+}
+
+soong_config_module_type {
+    name: "qcom_libfmjni",
+    module_type: "cc_defaults",
+    config_namespace: "customQcomVars",
+    bool_variables: ["no_fm_firmware"],
+    properties: ["cflags"],
+}
+
+qcom_libfmjni {
+    name: "qcom_libfmjni_defaults",
+    soong_config_variables: {
+        no_fm_firmware: {
+            cflags: ["-DQCOM_NO_FM_FIRMWARE"],
+        },
     },
 }
